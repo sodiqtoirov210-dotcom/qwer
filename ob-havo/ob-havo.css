@@ -1,0 +1,274 @@
+body{
+    display: flex;
+    justify-content: center;
+    background-image: url("pexels-francesco-ungaro-281260.jpg");
+    background-size: cover;
+    background-position: center;
+
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    max-width: 1200px;
+    width: 100%;
+    min-height: 85vh; 
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+.chap{
+    background-image: url('https://images.pexels.com/photos/6423094/pexels-photo-6423094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 30px 30px 100px 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.obhavo{
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    color: #fff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4)         ;
+}
+
+.temp h1 {
+    font-size: 72px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 1;
+}
+#harorat{
+    font-size: 70px;
+    margin: 0;
+}
+
+.joy h2{
+    font-size: 30px;
+    margin: 0;
+}
+.joy small {
+    font-size: 13px;
+    font-weight: 300;
+    opacity: 0.8;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+#data{
+    font-size: 12px;
+}
+
+.holat{
+    text-align: center;
+}
+
+.holat p{
+    font-size: 30px;
+    margin: 0;
+}
+
+.holat small{
+    font-size: 13px;
+    font-weight: 300;
+    display: block;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+.ong{
+    background: rgba(67, 107, 137, 0.85);
+    padding: 70px 40px 40px 40px;
+    backdrop-filter: blur(8px);
+    padding: 30px 28px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.malimot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#viloyatlar li{
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#viloyatlar li {
+    color: rgb(189, 182, 182);
+    padding: 6px 12px;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 0.3px;
+    background: transparent;
+    }
+#viloyatlar li:hover {
+    color: white;
+    }
+hr{
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    margin: 30px 0;
+}
+
+.malimot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+.malimot span:first-child {
+            opacity: 0.7;
+            font-size: 15px;
+        }
+
+        .malimot span:last-child {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+.qidiruv{
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 4px 4px 4px 18px;
+    transition: 0.2s;
+}
+.qidiruv ::placeholder{
+    color: rgba(189, 182, 182)
+}
+.qidiruv input{
+    flex: 1;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    outline: none;
+
+}
+.qidiruv button{
+    background-color: antiquewhite;
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+@media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                border-radius: 24px;
+            }
+
+            .ong {
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .chap {
+                min-height: 60vh;
+            }
+
+            .obhavo {
+                gap: 16px;
+            }
+
+            .temp h1 {
+                font-size: 56px;
+            }
+
+            .joy h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chap {
+                padding: 20px;
+            }
+
+            .ong {
+                padding: 20px;
+            }
+
+            .temp h1 {
+                font-size: 44px;
+            }
+
+            .joy h2 {
+                font-size: 22px;
+            }
+
+            .chap-header .logo {
+                font-size: 20px;
+                padding: 4px 14px;
+            }
+
+            .chap-header .q-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+            }
+
+            .obhavo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .holat {
+                align-self: flex-start;
+            }
+        }
+/* Animatsitya */
+.container{
+    animation: kirish 1.0s ease;
+}
+
+@keyframes kirish{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.yangilandi{
+    animation: update .6s ease;
+}
+
+@keyframes update{
+    0%{
+        opacity:0;
+        transform:scale(.9);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
