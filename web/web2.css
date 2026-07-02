@@ -1,0 +1,96 @@
+/* 1. Orqa fonni to'liq qoraytirish (ekranni to'liq qoplaydi va hamma narsani markazga tekislaydi) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;                 /* Butun ekran bo'yi */
+    background-color: rgba(0, 0, 0, 0.4); /* Orqa fonni biroz xiralashtirib qoraytirish */
+    
+    /* Ichidagi oq qutini ham vertikal, ham gorizontal roppa-rosa markazga qo'yadi */
+    display: flex;                 /* Siz default buni flex qilib qo'yishingiz mumkin */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;                 /* Sayt qatlamlaridan eng tepada turishi uchun */
+}
+
+/* 2. Modal oynaning oq qutisi (Sizdagi moviy rang o'rniga oq Figma dizayni) */
+.modal-card {
+    background-color: white;       /* Figma-dagidek toza oq rang */
+    width: 420px;                  /* Figma o'lchami */
+    padding: 30px;                 /* Ichki elementlar chetiga yopishib qolmasligi uchun */
+    border-radius: 12px;           /* Burchaklarni silliq yumshatish */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Chiroyli yumshoq soya */
+    
+    /* Ichidagi yozuvlar, input va tugmalarni chiroyli ustma-ust qator qilish */
+    display: flex;
+    flex-direction: column;        /* Elementlarni vertikal tartiblaydi */
+    gap: 20px;                     /* Elementlar orasida bir xil masofa ochadi */
+    font-family: 'Inter', sans-serif;
+}
+
+/* 3. Tepadagi sarlavha va Input qismini yonma-yon qilish (ixtiyoriy) yoki toza ustun qilish */
+.modal-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* Ism kiritish inputi */
+.modal-card input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background-color: #f8fafc;     /* Och kulrang fon input uchun */
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* 4. Avatarlar bo'limi */
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.avatar-section p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+    margin: 0;
+}
+
+/* Avatarlarni yonma-yon qilish */
+.avatar-list {
+    display: flex;
+    gap: 12px;                     /* Avatarlar orasidagi masofa */
+}
+
+.avatar-list img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.avatar-list img:hover {
+    transform: scale(1.1);         /* Sichqoncha borganda kattalashish effekti */
+}
+
+/* 5. Kirish tugmasi (Log in) */
+.modal-card .login-btn {
+    width: 100%;                   /* Butun oyna eni bo'ylab cho'ziladi */
+    background-color: #0066ff;     /* Figma-dagi ko'k rang */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+}
