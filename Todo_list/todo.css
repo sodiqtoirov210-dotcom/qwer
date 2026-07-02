@@ -1,0 +1,102 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3E476A;
+
+}
+
+.main{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.main h1{
+    font-size: 50px;
+    color: #fff;
+    
+}
+.main h3{
+    color: #fff;
+}
+.main input{
+    width: 400px;
+    height: 30px;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #2A304A;
+    color: #fff;
+    
+
+}
+.main input:focus{
+    border-radius: 5px;
+    outline: none;
+    border: 2px solid #2C6CC4;
+}
+
+.main ul{
+    padding: 0;
+}
+.main li{
+    list-style: none;
+    width: 380px;
+    height: 30px;
+    background-color: #4E3E7D;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 15px;
+    cursor: pointer;
+}
+.main li:only-child{
+    border-radius: 5px;
+}
+.main li:first-child:not(:last-child){
+    border-radius: 5px 5px 0 0 ;
+}
+.main li:last-child:not(:first-child){
+    border-radius: 0 0 5px 5px;
+}
+.main li:hover{
+    background-color: #5B4A8D ;
+}
+.main li button{
+    border: none;
+    background-color: transparent;
+    width: 40px;
+    height: 30px;
+}
+button svg{
+    width: 20px;
+    height: 20px;
+}
+
+.main button{
+    width: 400px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+    
+}
+
+.main button:active{
+    transform: scale(0.97);
+    background-color: rgba(255,255,255,0.1);
+}
+
+@media (max-width: 480px) {
+    .main input {
+        width: 280px;
+    }
+    .main li {
+        width: 260px;
+    }
+}
