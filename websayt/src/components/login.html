@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход на udevs news</title>
+    <style>
+        /* ========== Global Reset ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ========== Login Modal ========== */
+        .login-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .login-modal-card {
+            position: relative;
+            background-color: #ffffff;
+            width: 400px;
+            max-width: 92%;
+            padding: 40px 32px 32px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            animation: fadeIn 0.25s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* ===== Close Button ===== */
+        .close-modal-btn {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 300;
+            color: #9aa3b3;
+            background: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .close-modal-btn:hover {
+            color: #1a1a1a;
+            background-color: #f0f2f5;
+            transform: rotate(90deg);
+        }
+
+        /* ===== Title ===== */
+        .login-modal-card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0b1a33;
+            margin: 0 0 4px 0;
+            letter-spacing: -0.3px;
+        }
+
+        /* ===== Inputs ===== */
+        .login-modal-card input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background-color: #f3f6fa;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1a1a1a;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .login-modal-card input::placeholder {
+            color: #a8b3c5;
+            font-weight: 400;
+        }
+
+        .login-modal-card input:focus {
+            border-color: #0066ff;
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.08);
+            background-color: #ffffff;
+        }
+
+        /* ===== Login Button ===== */
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #0066ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 4px;
+        }
+
+        .login-btn:hover {
+            background-color: #0052cc;
+        }
+
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* ===== Forgot / Additional ===== */
+        .login-footer {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 2px;
+        }
+
+        .login-footer a {
+            font-size: 13px;
+            color: #0066ff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .login-footer a:hover {
+            color: #0047b3;
+            text-decoration: underline;
+        }
+
+        /* ===== Demo note (only for preview) ===== */
+        .preview-note {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== LOGIN MODAL ===== -->
+    <div class="login-modal-overlay" id="loginOverlay">
+        <div class="login-modal-card">
+
+            <!-- Close button -->
+            <button class="close-modal-btn" id="closeBtn">&times;</button>
+
+            <!-- Title -->
+            <h2>Вход на udevs news</h2>
+
+            <!-- Email input -->
+            <input type="email" placeholder="Email" id="emailInput">
+
+            <!-- Password input -->
+            <input type="password" placeholder="Пароль" id="passwordInput">
+
+            <!-- Login button -->
+            <button class="login-btn" id="loginBtn">Войти</button>
+
+            <!-- Optional extra link (like "Забыли пароль?") — rasmda yo'q lekin qo'shish mumkin -->
+            <div class="login-footer">
+                <!-- <a href="#">Забыли пароль?</a> -->
+            </div>
+
+        </div>
+    </div>
+
+    <div class="preview-note">Вход на udevs news — модальное окно</div>
+
+    <script>
+        const overlay = document.getElementById('loginOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+
+
+        function closeModal() {
+            overlay.style.display = 'none';
+        }
+
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closeModal();
+            }
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        loginBtn.addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!email || !password) {
+                alert('Пожалуйста, заполните все поля');
+                return;
+            }
+
+            alert(`Вход выполнен для: ${email}\nДалее откроется окно создания пароля (PasswordModal)`);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const active = document.activeElement;
+                if (active === emailInput || active === passwordInput) {
+                    loginBtn.click();
+                }
+            }
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // For demo: auto-focus email
+        emailInput.focus();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .header {
+            align-items: center;
+            padding: 10px 20px;
+            padding-left: 150px;
+            padding-right: 150px;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            background: white;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #3b4257;
+            display: flex;
+            align-items: flex-end;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        .logo_u,
+        .footer-u {
+            color: #0066ff;
+            border-bottom: 4px solid #0066ff;
+            padding-bottom: 2px;
+            line-height: 0.9;
+            display: inline-block;
+        }
+
+        .header_right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .Login {
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-family: sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background 0.2s;
+        }
+
+        .Login:hover {
+            background-color: #0052cc;
+        }
+
+        .katlog {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .katlog button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            color: #334155;
+            padding: 6px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .katlog button:hover {
+            color: #0066ff;
+            border-bottom-color: #0066ff;
+        }
+
+        /* --- Asosiy konteyner sahifani o'rtaga tekislash uchun --- */
+        main {
+            max-width: 85%;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        /* Profil kartasi */
+        .about_own {
+            display: flex;
+            align-items: flex-start;
+            background: transparent;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            gap: 40px;
+        }
+
+        .img_own img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .p_own {
+            flex-grow: 1;
+        }
+
+        .p_own h2 {
+            font-size: 26px;
+            font-weight: 400;
+            color: #1e293b;
+            margin-bottom: 20px;
+        }
+
+        .inab_top, .inab_mid, .inab_button {
+            display: flex;
+            padding: 12px 16px;
+            font-size: 14px;
+            align-items: center;
+        }
+
+        .inab_top, .inab_button {
+            background-color: #f8fafc; 
+        }
+
+        .inab_mid {
+            background-color: #ffffff;
+        }
+
+        .label {
+            width: 30%;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .value {
+            width: 70%;
+            color: #0f172a;
+        }
+
+        /* --- Yangi: Maqolalar (Publications) qismi uchun CSS --- */
+        .news_own h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .innews_own {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        /* Har bir maqola bloki */
+        .innew_own {
+            display: flex;
+            background: transparent;
+            border-radius: 12px;
+            overflow: hidden;
+            gap: 30px;
+            padding: 20px;
+            align-items: stretch;
+            position: relative;
+        }
+
+        /* Maqola rasmi */
+        .innew_own > img {
+            width: 600px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        /* Maqola ichidagi matnlar qutisi */
+        .innew_own_p {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: flex-start;
+        }
+
+        .innew_own_p h2 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            color: #1e293b;
+            margin-bottom: 10px;
+            text-transform: none;
+        }
+
+        /* Meta ma'lumotlar (Sana, ko'rishlar soni va kategoriya) */
+        .meta_info {
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .category-link {
+            color: #0066ff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .innew_own_p p {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* "Читать" tugmasi uslubi */
+        .chat {
+            align-self: flex-start;
+            margin-top: auto; /* Tugmani har doim pastga tekislaydi */
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat:hover {
+            background-color: #0052cc;
+        }
+        
+footer {
+    width: 95%;
+    background-color: #f7f9fa;
+    padding: 60px 40px 30px 40px;
+    color: #333;
+    margin-top: 100px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-brand span:first-child {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #3b4257;
+    display: flex;
+    align-items: flex-end;
+    cursor: default;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 300px;
+    margin-top: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #0052cc;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    border-top: 1px solid #e1e4e6;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- Logo -->
+        <div class="logo">
+            <span class="logo_u">u</span>devs
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="katlog">
+            <button>Все потоки</button>
+            <button>Разработка</button>
+            <button>Администрирование</button>
+            <button>Дизайн</button>
+            <button>Менеджмент</button>
+            <button>Маркетинг</button>
+            <button>Научпоп</button>
+        </div>
+
+        <div class="header_right">
+            <button class="Login" onclick="onOpenLogin()">Войти</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Profil qismi -->
+        <div class="about_own">
+            <div class="img_own">
+                <img src="/websayt/src/assets/schoolgril.png" alt="Дилором Алиева">
+            </div>
+            <div class="p_own">
+                <h2>Дилором Алиева</h2>
+                <div class="inab_top">
+                    <span class="label">Карьера</span>
+                    <span class="value">Писатель</span>
+                </div>
+        
+                <div class="inab_mid">
+                    <span class="label">Дата рождения</span>
+                    <span class="value">2 ноября, 1974 (46 лет)</span>
+                </div>
+        
+                <div class="inab_button">
+                    <span class="label">Место рождения</span>
+                    <span class="value">Черняховск, СССР (Россия)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nashrlar qismi (Publications) -->
+        <div class="news_own">
+            <h2>ПУБЛИКАЦИИ</h2>
+            <div class="innews_own">
+                
+                <!-- 1-Maqola -->
+                <div class="innew_own">
+                    <img src="/websayt/src/assets/women.png" alt="Rasm">
+                    <div class="innew_own_p">
+                        <h2>По инициативе Узбекистана создана Группа друзей по правам молодежи</h2>
+                        <div class="meta_info">
+                            <span>18:26 11.01.2021</span>
+                            <span>|</span>
+                            <span>👁 365</span>
+                            <a href="#" class="category-link">Права человека</a>
+                        </div>
+                        <p>Посланник Генерального секретаря ООН по делам молодежи Джаятма Викраманаяке приняла участие в презентации созданной по инициативе Узбекистана Группе друзей по правам молодежи. В рамках этого международного проекта планируется продвижение прав молодых жителей планеты и расшире...</p>
+                        <button class="chat">Читать</button>
+                    </div>
+                </div>
+
+                <!-- 2-Maqola (Takrorlanuvchi namuna) -->
+                <div class="innew_own">
+                    <img src="/websayt/src/assets/women.png" alt="Rasm">
+                    <div class="innew_own_p">
+                        <h2>По инициативе Узбекистана создана Группа друзей по правам молодежи</h2>
+                        <div class="meta_info">
+                            <span>18:26 11.01.2021</span>
+                            <span>|</span>
+                            <span>👁 365</span>
+                            <a href="#" class="category-link">Права человека</a>
+                        </div>
+                        <p>Посланник Генерального секретаря ООН по делам молодежи Джаятма Викраманаяке приняла участие в презентации созданной по инициативе Узбекистана Группе друзей по правам молодежи. В рамках этого международного проекта планируется продвижение прав молодых жителей планеты и расшире...</p>
+                        <button class="chat">Читать</button>
+                    </div>
+                </div>
+
+                <!-- 3-Maqola (Takrorlanuvchi namuna) -->
+                <div class="innew_own">
+                    <img src="/websayt/src/assets/women.png" alt="Rasm">
+                    <div class="innew_own_p">
+                        <h2>По инициативе Узбекистана создана Группа друзей по правам молодежи</h2>
+                        <div class="meta_info">
+                            <span>18:26 11.01.2021</span>
+                            <span>|</span>
+                            <span>👁 365</span>
+                            <a href="#" class="category-link">Права человека</a>
+                        </div>
+                        <p>Посланник Генерального секретаря ООН по делам молодежи Джаятма Викраманаяке приняла участие в презентации созданной по инициативе Узбекистана Группе друзей по правам молодежи. В рамках этого международного проекта планируется продвижение прав молодых жителей планеты и расшире...</p>
+                        <button class="chat">Читать</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+
+            <!-- Левая часть: бренд + описание -->
+            <div class="footer-brand">
+                <span>
+                    <span class="footer-u">u</span>devs
+                </span>
+                <p>
+                    Помощник в публикации статей, журналов. Список популярных конференций.
+                    Всё для студентов и преподавателей.
+                </p>
+            </div>
+
+            <!-- Правая часть: 3 колонки ссылок -->
+            <div class="footer-links">
+
+                <!-- Колонка 1: Ресурсы -->
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul>
+                        <li><a href="#">Статьи</a></li>
+                        <li><a href="#">Журналы</a></li>
+                        <li><a href="#">Газеты</a></li>
+                        <li><a href="#">Диплом</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 2: О нас -->
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <ul>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">Заявки</a></li>
+                        <li><a href="#">Политика</a></li>
+                    </ul>
+                </div>
+
+                <!-- Колонка 3: Помощь -->
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.footer-links -->
+
+        </div>
+        <!-- /.footer-container -->
+
+        <!-- Нижняя линия (копирайт) -->
+        <div class="footer-bottom">
+            <p>Copyright © 2020. Logolipsum. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 const display = document.getElementById("display");
 const input = document.querySelector(".input");
 const output = document.querySelector(".output");
@@ -7,6 +8,7 @@ let joriyson = "0";
 let oldingiSon = "";   
 let operator = "";     
 let yangiSonmi = false; 
+
 
 function ekranYangilash() {
   input.textContent = joriyson;
@@ -33,7 +35,6 @@ document.querySelectorAll(".sign").forEach(tugma => {
   tugma.addEventListener("click", () => {
     const amal = tugma.textContent;
 
-    // BU YERDA TUZATILDI: "AC" o'rniga "A/C" 
     if (amal === "A/C") {
       joriyson = "0";
       oldingiSon = "";

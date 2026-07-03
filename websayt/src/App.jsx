@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './App.css';
-// Rasmlarni import qilish
 import womenImg from './assets/women.png';
 import schoolgirlImg from './assets/schoolgril.png';
 import hendImg from './assets/hend.png';
@@ -13,7 +12,11 @@ function App() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // IMPORT QILINGAN RASMLARNI ISHLATISH
+  const [isNewsLoginModalOpen, setIsNewsLoginModalOpen] = useState(false);
+
+  const [email, setEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
   const avatars = [womenImg, schoolgirlImg, hendImg, womenImg];
 
   const handleOpenLogin = () => setIsLoginModalOpen(true);
@@ -46,8 +49,8 @@ function App() {
       alert("Parol kamida 6 ta belgidan iborat bo'lishi kerak!");
       return;
     }
-    alert('Akkaunt yaratildi! Xush kelibsiz, ' + username);
     setIsPasswordModalOpen(false);
+    setIsNewsLoginModalOpen(true);
   };
 
   return (
@@ -81,11 +84,20 @@ function App() {
           onCreateAccount={handleCreateAccount}
         />
       )}
+
+      {isNewsLoginModalOpen && (
+        <EmailLoginModal
+          email={email}
+          setEmail={setEmail}
+          loginPassword={loginPassword}
+          setLoginPassword={setLoginPassword}
+          onClose={() => setIsNewsLoginModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
 
-// Header komponenti
 function Header({ onOpenLogin }) {
   return (
     <header className="header">
@@ -100,9 +112,8 @@ function Header({ onOpenLogin }) {
   );
 }
 
-// Kategoriya tugmalari
 function CategoryButtons() {
-  const categories = ['main', 'razrabotka', 'adminstratsiya', 'dizayn', 'menejment', 'marketing', 'nauchop'];
+  const categories = ['Все потоки', 'Разработка', 'Администрирование', 'Дизайн', 'Менеджмент', 'Маркетинг', 'Научпоп'];
   return (
     <div className="katlog">
       {categories.map((cat, index) => (
@@ -112,14 +123,12 @@ function CategoryButtons() {
   );
 }
 
-// History (tarix) qismi - IMPORT QILINGAN RASMLARNI ISHLATISH
 function HistorySection() {
-  // Import qilingan rasmlarni ishlatish
   const images = [schoolgirlImg, hendImg, womenImg, schoolgirlImg, womenImg];
   
   return (
     <div className="history">
-      <div className="matn">istotya poclednix novostey</div>
+      <div className="matn">История последних новостей</div>
       <div className="istory">
         {images.map((src, index) => (
           <div className="img-ring" key={index}>
@@ -131,7 +140,6 @@ function HistorySection() {
   );
 }
 
-// Asosiy kontent - IMPORT QILINGAN RASMLARNI ISHLATISH
 function MainContent() {
   const images = [womenImg, schoolgirlImg, hendImg, womenImg];
   
@@ -142,7 +150,7 @@ function MainContent() {
           <img src={src} alt="" />
           <div className="inbox-content">
             <span className="inbox-date">18:26 11.02.2021 | 356</span>
-            <p className="inbox-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, eveniet.</p>
+            <p className="inbox-title">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
           </div>
         </div>
       ))}
@@ -152,9 +160,8 @@ function MainContent() {
   return <div className="main">{boxes}</div>;
 }
 
-// Pagination (sahifalar)
 function Pagination() {
-  const pages = ['\\', '1', '2', '3', '4', '5', '...', '86', '/'];
+  const pages = ['<', '1', '2', '3', '4', '5', '...', '86', '>'];
   return (
     <div className="controller">
       {pages.map((page, index) => (
@@ -164,15 +171,23 @@ function Pagination() {
   );
 }
 
-// Footer
 function Footer() {
   return (
     <footer>
       <div className="footer-container">
-        <div className="footer-brand">
-          <span className="footer-u">u</span>devs
-          <p>Помощник в публикации статей, журналов. Список популярных конференций. Всё для студентов и преподавателей.</p>
-        </div>
+      <div className="footer-brand">
+          <div className="logo">
+              <span className="footer-u">u</span>devs
+          </div>
+
+          <p>
+              Помощник в публикации статей, журналов.
+              <br /> 
+              Список популярных международных конференций.
+              <br />
+              Всё для студентов и преподавателей.
+          </p>
+      </div>
         <div className="footer-links">
           <div className="footer-column">
             <h3>Ресурсы</h3>
@@ -207,7 +222,6 @@ function Footer() {
   );
 }
 
-// Login modal
 function LoginModal({ username, setUsername, selectedAvatar, setSelectedAvatar, avatars, onClose, onLogin }) {
   return (
     <div className="modal-overlay active" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -241,7 +255,6 @@ function LoginModal({ username, setUsername, selectedAvatar, setSelectedAvatar, 
   );
 }
 
-// Password modal
 function PasswordModal({ password, setPassword, confirmPassword, setConfirmPassword, onClose, onCreateAccount }) {
   return (
     <div className="modal2-overaly active" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
@@ -261,6 +274,65 @@ function PasswordModal({ password, setPassword, confirmPassword, setConfirmPassw
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button className="login-btn" onClick={onCreateAccount}>Создать аккаунт</button>
+      </div>
+    </div>
+  );
+}
+
+function EmailLoginModal({
+  email,
+  setEmail,
+  loginPassword,
+  setLoginPassword,
+  onClose,
+}) {
+
+  const handleLogin = () => {
+    if (email.trim() === "" || loginPassword.trim() === "") {
+      alert("Barcha maydonlarni to'ldiring");
+      return;
+    }
+    alert("Muvaffaqiyatli login qilindi!");
+    onClose();
+  };
+
+  return (
+    <div
+      className="login-modal-overlay"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div className="login-modal-card">
+        <button
+          className="close-modal-btn"
+          onClick={onClose}
+        >
+          &times;
+        </button>
+
+        <h2>Вход на udevs news</h2>
+
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Пароль"
+          value={loginPassword}
+          onChange={(e) => setLoginPassword(e.target.value)}
+        />
+
+        <button
+          className="login-btn"
+          onClick={handleLogin}
+        >
+          Войти
+        </button>
       </div>
     </div>
   );

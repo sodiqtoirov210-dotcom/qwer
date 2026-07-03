@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настройки публикации</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #ffffff; 
+            color: #1e293b;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo_u, .footer-u {
+            color: #0066ff;
+            border-bottom: 3px solid #0066ff;
+            line-height: 0.85;
+            display: inline-block;
+        }
+
+        .katlog {
+            display: flex;
+            gap: 20px;
+        }
+
+        .katlog button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.2s;
+        }
+
+        .katlog button:hover {
+            color: #0066ff;
+        }
+
+        .Login {
+            background-color: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .Login:hover {
+            background-color: #0052cc;
+        }
+
+        main {
+            width: 100%;
+            margin: 60px auto; 
+            padding: 0 20px;
+            flex-grow: 1;
+            padding-left: 250px;
+            min-height: 100vh;
+        }
+
+        main h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000000;
+            margin-bottom: 35px;
+        }
+
+        .change_inp {
+            margin-bottom: 25px;
+        }
+
+        .change_inp p, .change_old span {
+            font-size: 13px;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+      
+        .change_inp input {
+            width: 500px;
+            padding: 10px 14px;
+            font-size: 13px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            outline: none;
+            color: #334155;
+        }
+
+        .change_inp input::placeholder {
+            color: #94a3b8;
+        }
+
+        .change_old {
+            background: transparent;
+            border: 1px solid #e2e8f0; 
+            border-radius: 4px;
+            padding: 16px;
+            width: 500px;
+        }
+
+        .change_old p {
+            font-size: 12px; 
+            line-height: 1.6;
+            color: #334155;
+            text-align: justify;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 60px 20px 40px 20px;
+            border-top: 1px solid #f1f5f9;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .footer-brand span:first-child {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .footer-brand p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #64748b;
+            margin-top: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column h3 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #64748b;
+            transition: color 0.2s;
+        }
+
+        .footer-column ul li a:hover {
+            color: #0066ff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+        }
+
+        .footer-bottom p {
+            font-size: 11px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <span class="logo_u">u</span>devs
+        </div>
+
+        <div class="katlog">
+            <button>Все потоки</button>
+            <button>Разработка</button>
+            <button>Администрирование</button>
+            <button>Дизайн</button>
+            <button>Менеджмент</button>
+            <button>Маркетинг</button>
+            <button>Научпоп</button>
+        </div>
+
+        <button class="Login">Войти</button>
+    </header>
+
+    <main>
+        <h1>Настройки публикации</h1>
+        
+        <div class="change_inp">
+            <p>Название</p>
+            <input type="text" placeholder="Text input">
+        </div>
+
+        <div class="change_old">
+            <span>Описание</span>
+            <p>Текст — зафиксированная на каком-либо материальном носителе человеческая мысль; в общем плане связная и полная последовательность символов. Существуют две основные трактовки понятия «текст»: имманентная (расширенная, философски нагруженная) и репрезентативная (более частная). Имманентный подход подразумевает отношение к тексту как к автономной реальности, нацеленность на выявление его внутренней структуры. Репрезентативный — рассмотрение текста как особой формы представления знаний о внешней тексту действительности.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span><span class="footer-u">u</span>devs</span>
+                <p>
+                    Помощник в публикации статей, журналов. Список популярных конференций.
+                    Всё для студентов и преподавателей.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul>
+                        <li><a href="#">Статьи</a></li>
+                        <li><a href="#">Журналы</a></li>
+                        <li><a href="#">Газеты</a></li>
+                        <li><a href="#">Диплом</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <ul>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">Блоги</a></li>
+                        <li><a href="#">Политика</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Помощь</h3>
+                    <ul>
+                        <li><a href="#">Часто задаваемые вопросы</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2020. Logolipsum. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

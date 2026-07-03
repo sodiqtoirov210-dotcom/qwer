@@ -1,10 +1,34 @@
 const API = "https://jsonplaceholder.typicode.com/todos";
+const searchInput = document.getElementById("schearInput");
 
-// GET
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        qidirish();
+    }
+});
+
+function qidirish() {
+    const qidiruv = searchInput.value.toLowerCase().trim();
+
+    const liLar = document.querySelectorAll("#todolist li");
+
+    liLar.forEach(li => {
+        const text = li.querySelector("span").textContent.toLowerCase();
+
+        if (text.includes(qidiruv)) {
+            li.style.display = "flex";
+        } else {
+            li.style.display = "none";
+        }
+    });
+}
+
+
+//get
 async function datas() {
   const res = await fetch(`${API}?_limit=4`);
   const todos = await res.json();
-  todos.forEach(todo => liYasa(todo)); // ✅
+  todos.forEach(todo => liYasa(todo)); 
 }
 
 // Li yaratish
@@ -24,7 +48,7 @@ function liYasa(todo) {
   `;
 
   li.querySelector("span").addEventListener("click", () => {
-    yangilash(todo.id, li.querySelector("span")); // ✅ querySelector (bitta)
+    yangilash(todo.id, li.querySelector("span"));
   });
 
   royxat.appendChild(li);
@@ -33,9 +57,9 @@ function liYasa(todo) {
 // POST
 async function qoshish() {
   const input = document.getElementById("newTodo");
-  const matn = input.value.trim(); // ✅
+  const matn = input.value.trim(); 
 
-  if (matn === "") return alert("Bo'sh input qo'shilmaydi!"); // ✅
+  if (matn === "") return alert("Bo'sh input qo'shilmaydi!"); 
 
   const res = await fetch(API, {
     method: "POST",
@@ -73,14 +97,14 @@ async function tahrirlash(id) {
 }
 
 // DELETE
-async function ochirish(id) { // ✅ nom to'g'rilandi
+async function ochirish(id) {
   await fetch(`${API}/${id}`, { method: "DELETE" });
   const li = document.querySelector(`li[data-id="${id}"]`);
   li.remove();
 }
 
 // PATCH
-async function yangilash(id, span) { // ✅ nom to'g'rilandi
+async function yangilash(id, span) { 
   const bajarildi = span.classList.contains("bajarildi");
 
   await fetch(`${API}/${id}`, {

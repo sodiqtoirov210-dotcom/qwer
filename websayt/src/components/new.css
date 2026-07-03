@@ -1,0 +1,380 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.header {
+    align-items: center;
+    padding: 10px 20px;
+    padding-left: 150px;
+    padding-right: 150px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid #eef2f6;
+}
+
+.logo {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #3b4257;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.logo_u,
+.footer-u {
+    color: #0066ff;
+    border-bottom: 4px solid #0066ff;
+    padding-bottom: 2px;
+    line-height: 0.9;
+    display: inline-block;
+}
+
+.header_right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.Login {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-family: sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background 0.2s;
+}
+
+.Login:hover {
+    background-color: #0052cc;
+}
+
+.katlog {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.katlog button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.katlog button:hover {
+    color: #0066ff;
+    border-bottom-color: #0066ff;
+}
+
+.main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 2fr 4fr 2fr;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 150px;
+    max-width: 100%;
+}
+
+.in_avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+}
+
+.in_avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.in_avatar p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.avat_button {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.follow {
+    border-radius: 20px;
+    border: none;
+    color: white;
+    background-color: #1a66ff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    transition: background 0.2s;
+}
+
+.follow:hover {
+    background-color: #0052cc;
+}
+
+.sev {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1.5px solid #1a66ff;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+.sev:hover {
+    background-color: #f0f5ff;
+}
+
+.sev svg {
+    width: 18px;
+    height: 18px;
+}
+
+.news {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news img {
+    height: 200px;
+    width: 600px;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.news_h {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inbox-date {
+    font-size: 13px;
+    color: #95a5a6;
+}
+
+.inbox-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1e272e;
+}
+
+.news_h p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #4b5563;
+    text-align: justify;
+}
+
+footer {
+    width: 95%;
+    background-color: #f7f9fa;
+    padding: 60px 40px 30px 40px;
+    color: #333;
+    margin-top: 100px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-brand {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-brand span:first-child {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #3b4257;
+    display: flex;
+    align-items: flex-end;
+    cursor: default;
+}
+
+.footer-brand p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 300px;
+    margin-top: 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.footer-column h3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.footer-column ul li a:hover {
+    color: #0052cc;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    border-top: 1px solid #e1e4e6;
+    padding-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+}
+
+
+@media (max-width: 1200px) {
+    .header {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .main {
+        padding: 30px 40px;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+    }
+    .news img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px 20px;
+    }
+    .katlog {
+        justify-content: center;
+    }
+    .main {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 30px;
+    }
+    .in_avatar {
+        margin-top: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        padding: 20px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .in_avatar img {
+        width: 80px;
+        height: 80px;
+    }
+    .in_avatar p {
+        margin: 0;
+        font-size: 18px;
+    }
+    .news img {
+        height: auto;
+        max-height: 300px;
+    }
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .footer-links {
+        gap: 40px;
+    }
+    footer {
+        padding: 40px 20px 20px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .katlog {
+        gap: 8px;
+    }
+    .katlog button {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+    .inbox-title {
+        font-size: 22px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 24px;
+    }
+}

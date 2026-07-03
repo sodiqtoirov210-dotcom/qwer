@@ -1,7 +1,7 @@
 body{
     display: flex;
     justify-content: center;
-    background-image: url("pexels-francesco-ungaro-281260.jpg");
+    background: linear-gradient(135deg, #5fa8ff, #6dd5fa, #9be7ff);
     background-size: cover;
     background-position: center;
 
@@ -22,12 +22,17 @@ body{
     background-image: url('https://images.pexels.com/photos/6423094/pexels-photo-6423094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
+    overflow: hidden;
     padding: 30px 30px 100px 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: background-image .8s ease,
+                transform .5s ease;
 }
+
 
 .obhavo{
     display: flex;
@@ -149,12 +154,12 @@ hr{
         }
 
 .qidiruv{
-    padding: 0;
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 4px 4px 4px 18px;
+    padding: 0;
     transition: 0.2s;
+    gap: 20px;
 }
 .qidiruv ::placeholder{
     color: rgba(189, 182, 182)
@@ -165,13 +170,16 @@ hr{
     border: none;
     font-size: 15px;
     outline: none;
+    border-bottom: solid 1px rgba(255,255,255,0.3);
+    margin-top: 60px;
 
 }
 .qidiruv button{
-    background-color: antiquewhite;
+    background-color: #a9cee1;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
+    
 }
 @media (max-width: 900px) {
             .container {
